@@ -581,7 +581,7 @@ def fig6_robustness():
     # Panel B: Accuracy vs WD scatter
     ax = axes[1]
     accs_lookup = {}
-    with open('/mnt/user-data/uploads/all_tracks_probe_results.csv') as f:
+    with open('outputs/all_tracks_probe_results.csv') as f:
         for r in csv.DictReader(f):
             accs_lookup.setdefault(r['model'], []).append(float(r['accuracy']))
     accs_mean = {m: np.mean(v)*100 for m, v in accs_lookup.items()}
