@@ -1,0 +1,13 @@
+{
+  "split_half_r": 0.504,
+  "spearman_brown": 0.67,
+  "profile_A_n": 5,
+  "profile_C_n": 8,
+  "cohens_d_C_vs_A": 4.552,
+  "cohens_d_95_CI": [
+    3.655,
+    7.837
+  ],
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 42
+}

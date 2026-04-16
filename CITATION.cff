@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this battery, the withdraw delta metric, or the probe methodology, please cite the following paper."
+title: "The Metacognitive Monitoring Battery: A Cross-Domain Behavioural Assay of Monitoring-Control Coupling in LLMs"
+authors:
+  - family-names: "Cacioli"
+    given-names: "Jon-Paul"
+    orcid: "https://orcid.org/0009-0000-7054-2014"
+year: 2026
+preferred-citation:
+  type: conference-paper
+  title: "The Metacognitive Monitoring Battery: A Cross-Domain Behavioural Assay of Monitoring-Control Coupling in LLMs"
+  authors:
+    - family-names: "Cacioli"
+      given-names: "Jon-Paul"
+      orcid: "https://orcid.org/0009-0000-7054-2014"
+  year: 2026
+  conference:
+    name: "Advances in Neural Information Processing Systems (NeurIPS), Evaluations and Datasets Track"
+repository-code: "https://github.com/<user>/metacognitive-monitoring-battery"
+license: MIT

@@ -1,0 +1,102 @@
+{
+  "Claude Haiku 4.5": {
+    "decline_rate": 1.3888888888888888,
+    "direct_rate": 84.72222222222223,
+    "hint_rate": 13.88888888888889
+  },
+  "Claude Opus 4.6": {
+    "decline_rate": 0.0,
+    "direct_rate": 98.61111111111111,
+    "hint_rate": 1.3888888888888888
+  },
+  "Claude Sonnet 4.6": {
+    "decline_rate": 0.0,
+    "direct_rate": 98.61111111111111,
+    "hint_rate": 1.3888888888888888
+  },
+  "DeepSeek R1": {
+    "decline_rate": 98.61111111111111,
+    "direct_rate": 0.0,
+    "hint_rate": 1.3888888888888888
+  },
+  "DeepSeek V3.2": {
+    "decline_rate": 4.166666666666667,
+    "direct_rate": 47.22222222222222,
+    "hint_rate": 48.611111111111114
+  },
+  "GLM-5": {
+    "decline_rate": 1.3888888888888888,
+    "direct_rate": 97.22222222222223,
+    "hint_rate": 1.3888888888888888
+  },
+  "GPT-5.4": {
+    "decline_rate": 1.3888888888888888,
+    "direct_rate": 98.61111111111111,
+    "hint_rate": 0.0
+  },
+  "GPT-5.4 mini": {
+    "decline_rate": 1.3888888888888888,
+    "direct_rate": 98.61111111111111,
+    "hint_rate": 0.0
+  },
+  "GPT-5.4 nano": {
+    "decline_rate": 0.0,
+    "direct_rate": 95.83333333333333,
+    "hint_rate": 4.166666666666667
+  },
+  "Gemini 2.5 Flash": {
+    "decline_rate": 0.0,
+    "direct_rate": 97.22222222222223,
+    "hint_rate": 2.7777777777777777
+  },
+  "Gemini 2.5 Pro": {
+    "decline_rate": 0.0,
+    "direct_rate": 100.0,
+    "hint_rate": 0.0
+  },
+  "Gemini 3 Flash": {
+    "decline_rate": 0.0,
+    "direct_rate": 97.22222222222223,
+    "hint_rate": 2.7777777777777777
+  },
+  "Gemini 3.1 Pro": {
+    "decline_rate": 0.0,
+    "direct_rate": 98.61111111111111,
+    "hint_rate": 1.3888888888888888
+  },
+  "Gemma 3 12B": {
+    "decline_rate": 0.0,
+    "direct_rate": 79.16666666666667,
+    "hint_rate": 20.833333333333332
+  },
+  "Gemma 3 1B": {
+    "decline_rate": 5.555555555555555,
+    "direct_rate": 4.166666666666667,
+    "hint_rate": 90.27777777777777
+  },
+  "Gemma 3 27B": {
+    "decline_rate": 0.0,
+    "direct_rate": 36.111111111111114,
+    "hint_rate": 63.888888888888886
+  },
+  "Qwen 235B": {
+    "decline_rate": 2.7777777777777777,
+    "direct_rate": 97.22222222222223,
+    "hint_rate": 0.0
+  },
+  "Qwen 80B Inst": {
+    "decline_rate": 1.3888888888888888,
+    "direct_rate": 97.22222222222223,
+    "hint_rate": 1.3888888888888888
+  },
+  "Qwen 80B Think": {
+    "decline_rate": 1.3888888888888888,
+    "direct_rate": 98.61111111111111,
+    "hint_rate": 0.0
+  },
+  "Qwen Coder 480B": {
+    "decline_rate": 0.0,
+    "direct_rate": 63.888888888888886,
+    "hint_rate": 36.111111111111114
+  }
+}

@@ -1,0 +1,21 @@
+model,accuracy_rank,mean_withdraw_delta,metacognition_rank,mean_accuracy,profile
+Claude Sonnet 4.6,10,39.4,1,0.93,C
+Claude Haiku 4.5,14,31.6,2,0.901,C
+Qwen Coder 480B,11,31.2,3,0.912,C
+Qwen 80B Inst,13,29.5,4,0.903,C
+GPT-5.4,8,27.9,5,0.938,C
+Qwen 235B,12,23.1,6,0.909,C
+GPT-5.4 mini,15,23.0,7,0.896,C
+Gemma 3 12B,18,21.0,8,0.857,C
+GLM-5,2,14.6,9,0.955,Unclassified
+Gemma 3 27B,17,10.9,10,0.879,Unclassified
+DeepSeek R1,1,9.5,11,0.987,B
+DeepSeek V3.2,16,9.3,12,0.89,Unclassified
+Gemini 2.5 Flash,3,7.6,13,0.954,A
+Claude Opus 4.6,6,7.0,14,0.941,Unclassified
+Gemini 3 Flash,4,6.7,15,0.945,A
+Gemini 2.5 Pro,9,6.0,16,0.93,A
+Gemma 3 1B,20,5.6,17,0.704,Unclassified
+GPT-5.4 nano,19,5.1,18,0.812,Unclassified
+Qwen 80B Think,5,1.5,19,0.942,A
+Gemini 3.1 Pro,7,-1.0,20,0.94,A
