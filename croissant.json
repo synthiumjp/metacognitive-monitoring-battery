@@ -1,0 +1,341 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "metacognitive-monitoring-battery",
+  "description": "A cross-domain behavioural assay of monitoring-control coupling in LLMs, grounded in the Nelson and Narens (1990) metacognitive framework. The battery comprises 524 items across six cognitive domains: overhypothesis learning (T1, 98 items), metacognitive calibration via SDT (T2, 90 items), social cognition (T3, 116 items), attention (T4, 60 items), executive function (T5, 88 items), and prospective regulation (T6, 72 items). Each item elicits a forced-choice response followed by dual metacognitive probes (KEEP/WITHDRAW and BET/NO_BET for T1-T5; ANSWER_DIRECTLY/REQUEST_HINT/DECLINE path choice for T6). Tasks T1-T5 were pre-registered on OSF prior to data collection; T6 was added as an exploratory extension via the Kaggle AGI Hackathon 2026. The distributed dataset contains 10,480 evaluations: 20 frontier LLMs from six provider families applied to every item, with per-model probe responses archived as 120 CSVs. This release supports reproduction of all results in Cacioli (2026), 'The Metacognitive Monitoring Battery' (NeurIPS 2026 Evaluations & Datasets Track submission).",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "url": "https://github.com/synthiumjp/metacognitive-monitoring-battery",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "version": "1.0.0",
+  "datePublished": "2026-04-16",
+  "keywords": [
+    "LLM evaluation",
+    "metacognition",
+    "signal detection theory",
+    "Nelson-Narens framework",
+    "cognitive science",
+    "benchmark",
+    "monitoring-control coupling",
+    "withdraw delta",
+    "prospective regulation",
+    "confidence calibration"
+  ],
+  "citeAs": "@article{cacioli2026mmb, title={The Metacognitive Monitoring Battery: A Cross-Domain Benchmark for LLM Self-Monitoring}, author={Cacioli, Jon-Paul}, year={2026}, note={NeurIPS 2026 Evaluations and Datasets Track}}",
+  "creator": {
+    "@type": "sc:Person",
+    "name": "Jon-Paul Cacioli",
+    "identifier": "https://orcid.org/0009-0000-7054-2014",
+    "url": "https://synthiumjp.github.io",
+    "email": "jp@synthiumjp.github.io"
+  },
+  "publisher": {
+    "@type": "sc:Person",
+    "name": "Jon-Paul Cacioli"
+  },
+  "isLiveDataset": false,
+  "rai:dataCollection": "All data were generated via automated API queries to 20 frontier LLMs (commercial APIs: OpenAI GPT-5.4 family, Anthropic Claude 4.5/4.6 family, Google Gemini 2.5/3.x family and Gemma IT family, Alibaba Qwen3 family, DeepSeek V3.2/R1, Zhipu GLM-5). Each of 524 items was administered independently with no cross-item context. Each item was administered exactly once per model at the platform's default temperature setting, yielding 10,480 distinct (model, item) evaluations. Evaluations were performed on the Kaggle Benchmarks platform using the kbench SDK. Raw response strings were parsed with explicit regex rules (archived in the repository at analysis/probe_analysis.py) to extract the forced-choice answer, the KEEP/WITHDRAW probe response, and the BET/NO_BET probe response (T1-T5) or the ANSWER_DIRECTLY/REQUEST_HINT/DECLINE path choice (T6). All items are original cognitive-science-style stimuli authored de novo by the researcher; no items were scraped, crowd-sourced, or licensed from third-party sources.",
+  "rai:dataCollectionType": "machine-generated",
+  "rai:dataCollectionTimeframe": {
+    "@type": "sc:DateTime",
+    "startDate": "2026-03-01",
+    "endDate": "2026-04-15"
+  },
+  "rai:dataAnnotationProtocol": "Ground-truth labels were determined at item-authoring time by the researcher based on the paradigm specification (e.g., correct overhypothesis target for T1, TRUE/FALSE for T2 statements, implicature-consistent response for T3, magnitude-comparison answer for T5). No post-hoc annotation was performed. Correctness (the 'correct' column in each CSV) reflects the model's forced-choice answer matched against the pre-specified ground truth. Probe responses (keep_withdraw, bet_nobet) are the model's self-reports and carry no external label.",
+  "rai:dataUseCases": "The intended use is evaluation of LLM metacognitive monitoring: quantifying how well a language model's commitment decisions track the accuracy of its own responses (withdraw delta), as a supplement to or contrast with standard accuracy metrics. Downstream uses include (a) model selection for confidence-dependent applications (selective prediction, abstention, human-AI collaboration), (b) diagnostics for detecting blanket-confidence or blanket-withdrawal behavioural profiles, (c) cross-domain comparison of metacognitive capacity within a single model, and (d) replication studies using the Type-2 SDT framework.",
+  "rai:dataBiases": "The battery is limited to English-language items and to forced-choice formats. Model coverage, while broad (20 frontier models across six providers), is restricted to models accessible via commercial API or open-weight release as of April 2026 and therefore underrepresents small open-weight models (<7B parameters outside the Gemma 1B/3B range) and models released after the collection window. Item counts are modest per condition on some tracks (e.g., T4 has 10 items per condition), limiting statistical power for within-track condition comparisons. The dual-probe KEEP/WITHDRAW format is a minimal viable operationalisation of monitoring-control coupling; graded confidence probes would provide finer resolution but are not included in this release.",
+  "rai:dataLimitations": "Each (model, item) pair was administered once; the dataset does not support test-retest reliability estimation within this release. Profile assignments reported in the accompanying paper are single-administration point estimates and are not bounded by confidence intervals across repeated measurements. Prompt sensitivity, temperature effects, and response stability across repeated administrations were not systematically varied and are flagged as future work. Per-track sample sizes differ (T3: 116 items, T4: 60 items) and comparisons across tracks should account for this. Closed-source models (OpenAI, Anthropic, Google, DeepSeek, Alibaba commercial, Zhipu) have undisclosed architectures and training regimes; cross-family comparisons cannot isolate architecture-vs-training effects on metacognitive behaviour.",
+  "rai:personalSensitiveInformation": "None. The dataset contains no personal or sensitive information. All items are synthetic cognitive-science-style stimuli authored for this work. No human-subjects data, no scraped personal data, and no demographic or protected-attribute inferences are included.",
+  "rai:dataSocialImpact": "Positive impact: more principled evaluation of LLM uncertainty reporting supports safer deployment in selective prediction, human-AI collaboration, and abstention-capable systems. The battery exposes blanket-confidence behaviour that standard accuracy metrics reward, providing a measurement tool to detect and correct this pattern. Potential risk: a leaderboard that ranks models on metacognitive sensitivity could be gamed by optimising for the specific probe format rather than improving underlying monitoring capacity. The accompanying paper explicitly recommends reporting metacognitive metrics alongside, not instead of, accuracy. The probe methodology is a minimal viable operationalisation and should not be treated as a complete substitute for task-specific reliability evaluation.",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "github-repository",
+      "name": "github-repository",
+      "description": "Source repository hosting the full battery, analysis pipeline, and archived outputs.",
+      "contentUrl": "https://github.com/synthiumjp/metacognitive-monitoring-battery",
+      "encodingFormat": "git+https",
+      "sha256": "main"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "t1-overhypothesis-csvs",
+      "name": "t1-overhypothesis-csvs",
+      "description": "T1 Overhypothesis Learning: 20 CSVs (one per evaluated model), 98 items each. Tests second-order category generalisation in a nonce-word world.",
+      "containedIn": {"@id": "github-repository"},
+      "encodingFormat": "text/csv",
+      "includes": "data/csvs/Overhypothesis/*.csv"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "t2-metacognition-csvs",
+      "name": "t2-metacognition-csvs",
+      "description": "T2 Metacognitive Calibration: 20 CSVs (one per evaluated model), 90 items each. SDT calibration across four item classes: calibration, prospective monitoring, error detection, knowledge boundaries.",
+      "containedIn": {"@id": "github-repository"},
+      "encodingFormat": "text/csv",
+      "includes": "data/csvs/Meta Cog/*.csv"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "t3-social-cognition-csvs",
+      "name": "t3-social-cognition-csvs",
+      "description": "T3 Social Cognition: 20 CSVs (one per evaluated model), 116 items each. Nine conditions spanning mutual exclusivity, scalar implicature, false belief at three orders, and irony.",
+      "containedIn": {"@id": "github-repository"},
+      "encodingFormat": "text/csv",
+      "includes": "data/csvs/Social Cognition/*.csv"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "t4-attention-csvs",
+      "name": "t4-attention-csvs",
+      "description": "T4 Attention: 20 CSVs (one per evaluated model), 60 items each. Six conditions testing selective attention under competition (biased-competition paradigm).",
+      "containedIn": {"@id": "github-repository"},
+      "encodingFormat": "text/csv",
+      "includes": "data/csvs/Attention/*.csv"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "t5-executive-csvs",
+      "name": "t5-executive-csvs",
+      "description": "T5 Executive Function: 20 CSVs (one per evaluated model), 88 items each. Three conditions: format flexibility, inhibitory control, task switching. Ratio-graded following Weber's Law.",
+      "containedIn": {"@id": "github-repository"},
+      "encodingFormat": "text/csv",
+      "includes": "data/csvs/Executive/*.csv"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "t6-prospective-csvs",
+      "name": "t6-prospective-csvs",
+      "description": "T6 Prospective Regulation: 20 CSVs (one per evaluated model), 72 items each. Calibrated help-seeking paradigm: models choose ANSWER_DIRECTLY, REQUEST_HINT, or DECLINE before answering.",
+      "containedIn": {"@id": "github-repository"},
+      "encodingFormat": "text/csv",
+      "includes": "data/csvs/prospective/*.csv"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "retrospective-tracks-records",
+      "name": "retrospective-tracks-records",
+      "description": "One record per item administration on T1-T5. Each record pairs a forced-choice task response with its two metacognitive probe responses. Correctness, probe responses, and item metadata are explicit columns.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "retrospective-tracks-records/item",
+          "name": "item",
+          "description": "Zero- or one-indexed item number within the track, sequential in the CSV.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {"@id": "t1-overhypothesis-csvs"},
+            "extract": {"column": "item"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "retrospective-tracks-records/correct",
+          "name": "correct",
+          "description": "Whether the model's forced-choice answer matched the pre-specified ground truth. 1 = correct, 0 = incorrect.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {"@id": "t1-overhypothesis-csvs"},
+            "extract": {"column": "correct"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "retrospective-tracks-records/keep_withdraw",
+          "name": "keep_withdraw",
+          "description": "Model's response to Probe 1: 'KEEP' (commit to answer) or 'WITHDRAW' (retract answer). The critical signal for computing withdraw delta.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {"@id": "t1-overhypothesis-csvs"},
+            "extract": {"column": "keep_withdraw"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "retrospective-tracks-records/bet_nobet",
+          "name": "bet_nobet",
+          "description": "Model's response to Probe 2: 'BET' (high confidence in correctness) or 'NO_BET' (low confidence). Secondary metacognitive probe.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {"@id": "t1-overhypothesis-csvs"},
+            "extract": {"column": "bet_nobet"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "retrospective-tracks-records/meta_score",
+          "name": "meta_score",
+          "description": "Numeric score encoding the combined KEEP/WITHDRAW and BET/NO_BET responses, used for downstream metacognitive analysis. Derivation is documented in analysis/probe_analysis.py.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {"@id": "t1-overhypothesis-csvs"},
+            "extract": {"column": "meta_score"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "retrospective-tracks-records/item_type",
+          "name": "item_type",
+          "description": "Condition or sub-paradigm label for this item (track-specific). For T1: overhypothesis condition. For T2: calibration/prospective/error/boundary. For T3: mutual exclusivity / scalar implicature / false belief / irony condition. For T4: biased-competition condition. For T5: format / inhibitory / switching condition.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {"@id": "t1-overhypothesis-csvs"},
+            "extract": {"column": "item_type"}
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "prospective-track-records",
+      "name": "prospective-track-records",
+      "description": "One record per item administration on T6. Each record contains the pre-response path choice (ANSWER_DIRECTLY, REQUEST_HINT, or DECLINE), the answer if given, correctness, and retrospective KEEP/WITHDRAW and BET/NO_BET probe responses.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "prospective-track-records/item_id",
+          "name": "item_id",
+          "description": "Identifier for the T6 item.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {"@id": "t6-prospective-csvs"},
+            "extract": {"column": "item_id"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "prospective-track-records/question",
+          "name": "question",
+          "description": "The item text presented to the model.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {"@id": "t6-prospective-csvs"},
+            "extract": {"column": "question"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "prospective-track-records/tier",
+          "name": "tier",
+          "description": "Difficulty tier for the item, used in the T6 payoff schedule.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {"@id": "t6-prospective-csvs"},
+            "extract": {"column": "tier"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "prospective-track-records/domain",
+          "name": "domain",
+          "description": "Knowledge domain label for the item.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {"@id": "t6-prospective-csvs"},
+            "extract": {"column": "domain"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "prospective-track-records/path_choice",
+          "name": "path_choice",
+          "description": "Pre-response prospective regulation choice: ANSWER_DIRECTLY (full credit if correct, zero if wrong), REQUEST_HINT (half credit with hint), or DECLINE (quarter credit).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {"@id": "t6-prospective-csvs"},
+            "extract": {"column": "path_choice"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "prospective-track-records/is_correct",
+          "name": "is_correct",
+          "description": "Whether the model's final answer (after the chosen path) matched the ground truth.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {"@id": "t6-prospective-csvs"},
+            "extract": {"column": "is_correct"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "prospective-track-records/score",
+          "name": "score",
+          "description": "Path-weighted score for this item under the T6 payoff schedule (full/half/quarter credit applied to correctness).",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {"@id": "t6-prospective-csvs"},
+            "extract": {"column": "score"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "prospective-track-records/keep_withdraw",
+          "name": "keep_withdraw",
+          "description": "Retrospective KEEP/WITHDRAW probe following the T6 response.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {"@id": "t6-prospective-csvs"},
+            "extract": {"column": "keep_withdraw"}
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "prospective-track-records/bet_nobet",
+          "name": "bet_nobet",
+          "description": "Retrospective BET/NO_BET probe following the T6 response.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {"@id": "t6-prospective-csvs"},
+            "extract": {"column": "bet_nobet"}
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -9,7 +9,7 @@ This repository contains the analysis pipeline that turns raw per-(model, track)
 ## Quickstart
 
 ```bash
-git clone https://github.com/<user>/metacognitive-monitoring-battery.git
+git clone https://github.com/synthiumjp/metacognitive-monitoring-battery.git
 cd metacognitive-monitoring-battery
 pip install -r requirements.txt
 python reproduce.py
@@ -116,6 +116,15 @@ If you use this battery, the withdraw delta, or the probe methodology, please ci
 ```
 
 See also `CITATION.cff` for other citation formats.
+
+## Dataset metadata (Croissant)
+
+A [Croissant](http://mlcommons.org/croissant/) JSON-LD metadata file is provided at `croissant.json` at the repository root. It describes the battery's structure (six tracks, 120 CSVs, two record-set schemas for retrospective and prospective tracks), licensing, and Responsible AI fields (data collection protocol, intended use cases, limitations, social impact). The file validates against `mlcroissant` v1.0 and can be parsed directly:
+
+```python
+import mlcroissant as mlc
+ds = mlc.Dataset(jsonld="croissant.json")
+```
 
 ## License
 
