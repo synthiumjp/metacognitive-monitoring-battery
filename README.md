@@ -125,6 +125,17 @@ A [Croissant](http://mlcommons.org/croissant/) JSON-LD metadata file is provided
 import mlcroissant as mlc
 ds = mlc.Dataset(jsonld="croissant.json")
 ```
+## Hugging Face
+
+The full dataset (10,480 response rows across 20 models × 524 items) is also hosted on Hugging Face for direct loading:
+
+```python
+from datasets import load_dataset
+ds = load_dataset("synthiumjp/metacognitive-monitoring-battery")
+```
+
+Browse the data: [huggingface.co/datasets/synthiumjp/metacognitive-monitoring-battery](https://huggingface.co/datasets/synthiumjp/metacognitive-monitoring-battery)
+
 
 ## License
 
