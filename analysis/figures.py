@@ -166,70 +166,63 @@ def fig1_phenotypes():
 def fig2_slope():
     fig, ax = plt.subplots(figsize=(11, 11))
 
-    # Sort
-    by_acc = sorted(LEADERBOARD.items(), key=lambda x: x[1]['acc_rank'])
-    # For meta rank, exclude R1
-    meta_ranked = [(m, d) for m, d in LEADERBOARD.items() if m != 'DeepSeek R1']
-    by_meta = sorted(meta_ranked, key=lambda x: -x[1]['mean_wd'])
+    # Exclude R1 from both rankings
+    models_ranked = {m: d for m, d in LEADERBOARD.items() if m != 'DeepSeek R1'}
+    
+    # Sort by accuracy rank (ascending = best first), re-rank among 19 models
+    by_acc = sorted(models_ranked.items(), key=lambda x: x[1]['acc_rank'])
+    # Sort by meta (WD descending)
+    by_meta = sorted(models_ranked.items(), key=lambda x: -x[1]['mean_wd'])
 
     n = len(by_acc)
-    n_meta = len(by_meta)
 
     # Position dict
     acc_pos = {m: i for i, (m, _) in enumerate(by_acc)}
     meta_pos = {m: i for i, (m, _) in enumerate(by_meta)}
 
-    for m in LEADERBOARD:
+    for m in models_ranked:
         ay = -acc_pos[m]
-        if m == 'DeepSeek R1':
-            # Show but dashed at bottom
-            my = -(n_meta + 0.5)
-            color = '#A8C8E8'
-            ls = '--'
-            lw = 1.2
-            alpha = 0.6
+        my = -meta_pos[m]
+        # Determine colour by rank shift
+        shift = acc_pos[m] - meta_pos[m]
+        if m in GPT_FAMILY:
+            color = COL_GPT
+            lw = 2.2
+            alpha = 0.85
+        elif shift >= 3:
+            color = COL_A  # rises
+            lw = 1.8
+            alpha = 0.75
+        elif shift <= -3:
+            color = COL_C  # drops
+            lw = 1.8
+            alpha = 0.75
         else:
-            my = -meta_pos[m]
-            # Determine colour by rank shift
-            shift = acc_pos[m] - meta_pos[m]
-            if m in GPT_FAMILY:
-                color = COL_GPT
-                lw = 2.2
-                alpha = 0.85
-            elif shift >= 3:
-                color = COL_A  # rises
-                lw = 1.8
-                alpha = 0.75
-            elif shift <= -3:
-                color = COL_C  # drops
-                lw = 1.8
-                alpha = 0.75
-            else:
-                color = '#888888'
-                lw = 0.9
-                alpha = 0.4
-            ls = '-'
+            color = '#888888'
+            lw = 0.9
+            alpha = 0.4
 
-        ax.plot([0, 1], [ay, my], color=color, lw=lw, alpha=alpha, linestyle=ls, zorder=2)
+        ax.plot([0, 1], [ay, my], color=color, lw=lw, alpha=alpha, linestyle='-', zorder=2)
 
-    # Labels
-    for m, d in by_acc:
-        y = -acc_pos[m]
+    # Labels - accuracy side
+    for i, (m, d) in enumerate(by_acc):
+        y = -i
         wt = 'bold' if m in GPT_FAMILY else 'normal'
-        ax.text(-0.04, y, f"{d['acc_rank']}. {m}", ha='right', va='center', fontsize=9, fontweight=wt)
-        ax.text(0.03, y, f"{d['acc_rank']:.0f}", ha='left', va='center', fontsize=8, color='gray')
+        ax.text(-0.04, y, f"{i+1}. {m}", ha='right', va='center', fontsize=9, fontweight=wt)
+        ax.text(0.03, y, f"{i+1}", ha='left', va='center', fontsize=8, color='gray')
 
+    # Labels - meta side
     for i, (m, d) in enumerate(by_meta):
         y = -i
         wt = 'bold' if m in GPT_FAMILY else 'normal'
         ax.text(1.04, y, f"{m} ({d['mean_wd']:+.1f}%)", ha='left', va='center', fontsize=9, fontweight=wt)
 
-    # R1 row
-    ax.text(1.04, -(n_meta + 0.5), 'DeepSeek R1 (excl.†)',
-            ha='left', va='center', fontsize=9, style='italic', color='#7AAEDC')
+    # R1 footnote at bottom
+    ax.text(0.5, -(n + 0.8), '†DeepSeek R1 excluded from both rankings (blanket withdrawal, 1–9% KEEP)',
+            ha='center', va='center', fontsize=9, style='italic', color='#7AAEDC')
 
     ax.set_xlim(-0.7, 1.7)
-    ax.set_ylim(-(n + 1), 0.5)
+    ax.set_ylim(-(n + 1.5), 0.5)
     ax.set_xticks([])
     ax.set_yticks([])
     ax.spines['left'].set_visible(False)
@@ -248,7 +241,7 @@ def fig2_slope():
     ax.legend(handles=legend_elems, loc='lower center', ncol=3, frameon=False,
               bbox_to_anchor=(0.5, -0.06), fontsize=10)
 
-    ax.set_title('Accuracy rank vs metacognitive sensitivity rank across 20 models\n†R1 excluded from metacognition ranking (blanket withdrawal, 1–9% KEEP)',
+    ax.set_title('Accuracy rank vs metacognitive sensitivity rank across 19 models\n†R1 excluded from both rankings',
                  fontsize=11, pad=20)
 
     plt.tight_layout()
