@@ -2,7 +2,7 @@
 
 Analysis code accompanying:
 
-> Cacioli, J.-P. (2026). The Metacognitive Monitoring Battery: A cross-domain behavioural assay of monitoring-control coupling in LLMs. *NeurIPS 2026 Evaluations & Datasets Track*.
+> Cacioli, J.-P. (2026). The Metacognitive Monitoring Battery: A cross-domain behavioural assay of monitoring-control coupling in LLMs. *NeurIPS 2026 Evaluations & Datasets Track*. arXiv: [2604.15702](https://arxiv.org/abs/2604.15702).
 
 This repository contains the analysis pipeline that turns raw per-(model, track) response CSVs into the withdraw delta, behavioural profile assignments, inverted leaderboard, retrospective-prospective dissociation, scaling trajectories, and all six figures reported in the paper.
 
@@ -45,10 +45,10 @@ Every quantitative claim in the paper maps to a file in `outputs/`:
 | §3.1 Table 2 | Per-model accuracy (6 tracks + mean) | `probe_adjusted_leaderboard.csv`, `per_track_data.json` |
 | §3.2 | Three behavioural profiles (A, B, C) | `probe_adjusted_leaderboard.csv` |
 | §3.3 | Inverted leaderboard (acc rank vs WΔ rank) | `probe_adjusted_leaderboard.csv` |
-| §3.4 | Retrospective-prospective dissociation (r=.16, ρ=-.14) | `all_tracks_probe_results.csv`, `t6_data.json` |
+| §3.4 | Retrospective-prospective dissociation (r=.17, ρ=-.14) | `all_tracks_probe_results.csv`, `t6_data.json` |
 | §3.5 | Domain-specific profile fragmentation | `per_track_data.json` |
 | §3.7 | Architecture-dependent T2 scaling | `per_track_data.json` (Qwen/GPT-5.4/Gemma entries) |
-| §3.9 | Split-half r=.51, SB=.68, Cohen's d=4.57 [3.65, 7.95] | `reliability_stats.json` |
+| §3.9 | Split-half r=.51, SB=.68, Cohen's d=4.57 [3.65, 7.84] | `reliability_stats.json` |
 | Figures 1-6 | All six publication figures | `fig{1-6}_*.png` |
 
 ## Repository structure
@@ -125,6 +125,7 @@ A [Croissant](http://mlcommons.org/croissant/) JSON-LD metadata file is provided
 import mlcroissant as mlc
 ds = mlc.Dataset(jsonld="croissant.json")
 ```
+
 ## Hugging Face
 
 The full dataset (10,480 response rows across 20 models × 524 items) is also hosted on Hugging Face for direct loading:
@@ -135,7 +136,6 @@ ds = load_dataset("synthiumjp/metacognitive-monitoring-battery")
 ```
 
 Browse the data: [huggingface.co/datasets/synthiumjp/metacognitive-monitoring-battery](https://huggingface.co/datasets/synthiumjp/metacognitive-monitoring-battery)
-
 
 ## License
 
