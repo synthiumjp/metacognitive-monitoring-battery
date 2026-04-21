@@ -2,7 +2,7 @@
 
 Analysis code accompanying:
 
-> Cacioli, J.-P. (2026). The Metacognitive Monitoring Battery: A cross-domain behavioural assay of monitoring-control coupling in LLMs. *NeurIPS 2026 Evaluations & Datasets Track*. arXiv: [2604.15702](https://arxiv.org/abs/2604.15702).
+> Cacioli, J.-P. (2026). The Metacognitive Monitoring Battery: A cross-domain behavioural assay of monitoring-control coupling in LLMs. *arXiv:2604.15702*.
 
 This repository contains the analysis pipeline that turns raw per-(model, track) response CSVs into the withdraw delta, behavioural profile assignments, inverted leaderboard, retrospective-prospective dissociation, scaling trajectories, and all six figures reported in the paper.
 
@@ -107,10 +107,10 @@ Python ≥ 3.10. All dependencies are pure Python with pinned versions in `requi
 If you use this battery, the withdraw delta, or the probe methodology, please cite:
 
 ```bibtex
-@inproceedings{cacioli2026mmb,
+@article{cacioli2026mmb,
   title  = {The Metacognitive Monitoring Battery: A Cross-Domain Behavioural Assay of Monitoring-Control Coupling in LLMs},
   author = {Cacioli, Jon-Paul},
-  booktitle = {Advances in Neural Information Processing Systems (Evaluations and Datasets Track)},
+  journal = {arXiv preprint arXiv:2604.15702},
   year   = {2026}
 }
 ```
